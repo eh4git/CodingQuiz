@@ -1,26 +1,8 @@
-var quizDisplay = document.getElementById("quizArea");
 
-
-timeOnClock = 5;
-function startQuiz() {
-    // var timerStop =  setInterval(setTime, 1000);
-    questionSelection();
-    questIndex++;
-    //         console.log("Timer: "+ timeOnClock);
-};
-var timerStop = setInterval(setTime, 1000);
-function setTime() {
-    timeOnClock--;
-    var timerEl = document.querySelector("#time");
-
-    timerEl.textContent = timeOnClock;
-    console.log(timeOnClock)
-
-    if (timeOnClock === 0) {
-        clearInterval(timerStop);
-
-    }
-}
+var questIndex = 0;
+var allAnswers = "";
+var 
+timeOnClock = 75;
 
 var questArray = [
     {
@@ -64,7 +46,25 @@ var questArray = [
         correctAns: "red"
     },
 ]
-var questIndex = 0;
+function startQuiz() {
+    // var timerStop =  setInterval(setTime, 1000);
+    questionSelection();
+    questIndex++;
+            console.log("Timer: "+ timeOnClock,"");
+};
+var timerStop = setInterval(setTime, 1000);
+function setTime() {
+    timeOnClock--;
+    var timerEl = document.querySelector("#time");
+
+    timerEl.textContent = timeOnClock;
+    console.log(timeOnClock)
+
+    if (timeOnClock === 0) {
+        clearInterval(timerStop);
+
+    }
+}
 
 
 
@@ -80,7 +80,7 @@ function questionSelection() {
     var answer4El = document.querySelector("#answer4")
     answer4El.textContent = questArray[questIndex].answer[3]
     allAnswers = document.querySelectorAll("#answer")
-    
+
     var rightAns = questArray[questIndex].correctAns
     for (i = 0; i > allAnswers.lenght; i++) {
         var answerTxt = allAnswers[i].textContent;
