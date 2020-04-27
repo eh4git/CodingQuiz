@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="Assets/style.css">
-    <link rel="javascript" type="javascript" href="Assets/javascript.js">
 </head>
 
 <body>
@@ -20,15 +19,15 @@
             </div>
             <!--Blank Space--> 
             <div class="col-md-3">
-
+                
             </div>
             <!--Blank Space--> 
             <div class="col-md-3">
-
+                
             </div>
             <!--Timer--> 
             <div class="col-md-3">
-                <p id="Time">Timer</p>
+                <div id="timeTxt">Timer: <span id="time">75</span></div>
             </div>
         </div>
         <!--Coding Quiz Start-->
@@ -36,12 +35,27 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>Quiz here</h1>
-                    <p id="quizQuestion">Question Here <br> <button id="ansBtn1">Answer1</button> <br> <button id="ansBtn2">Answer2</button> <br>
-                        <button id="ansBtn3">Ans0wer3</button> <br> <button id="ansBtn4">Answer4</button></p>
+                    <h2 id="quizQuestion"></h2>
+                    <ul id= "answers" class="answers">
+                        <li id="answer1" class="answer"></li>
+                        <li id="answer2" class="answer"></li>
+                        <li id="answer3" class="answer"></li>
+                        <li id="answer4" class="answer"></li>
+
+                    </ul>
+                    
+                    
+                    
+                    <button class= "start">Start</button>
+                    
+                    
+                    <!-- <p id="quizQuestion">Question Here <br> <button class= "start">Start</button><button class= "answers" id="ansBtn1">Answer1</button> <br> <button class= "answers" id="ansBtn2">Answer2</button> <br>
+                        <button class= "answers" id="ansBtn3">Answer3</button> <br> <button class= "answers" id="ansBtn4">Answer4</button></p> -->
+                    </div> 
                 </div>
             </div>
         </div>
-    </div>
-</body>
-
+        <script src="Assets/javascript.js"></script>
+    </body>
+    
 </html>
