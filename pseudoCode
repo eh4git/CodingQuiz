@@ -1,0 +1,17 @@
+When the page loads it will show a page that displays "veiw high scores" in the top left corner, "timer" in the top right corner with a paused timer at 
+75sec. Centered in the screen will be a message explaining the quiz and its rules with button underneath to start quiz.
+
+When the quiz start button is pressed the timer will begin to count down and the page will display the first question with a series of four answers in a 
+column of buttons. When the user choses an aswer a line underneath the quiz will display whether the answer was corret or incorret,and add or deduct time
+from the timer accodringly, it will also change the question being displayed to the next question. 
+
+If the user has time left on the quiz will continue untill all of the questions have been asked, if the timer reaches 0 the quiz will end.
+
+If the quiz ends the users final score will be displayed. The final score will be equal to the time left on the timer.
+There will be a form underneath the final score that says "enter initials". When the user presses enter they will be directed to the high scores page. 
+
+When the user reaches the highscore page they will see a list of high scores in order based on score. There will be two buttons underneath the scores, one 
+will say "back" and will redirect the user to the display that explains the quiz and has the button to start the quiz. The other button will give the user
+the option to clear the highscore list.
+
+
