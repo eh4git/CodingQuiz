@@ -15,47 +15,62 @@
         <div class="row">
             <!--Highscores-->
             <div class="col-md-3">
-                <p><button id="highScoresBtn">Highscores</button></p>
+                <p><button id="highScoresBtn"><a href="highscores.html"> Highscores</a></button></p>
             </div>
-            <!--Blank Space--> 
+            <!--Blank Space-->
             <div class="col-md-3">
-                
+
             </div>
-            <!--Blank Space--> 
+            <!--Blank Space-->
             <div class="col-md-3">
-                
+
             </div>
-            <!--Timer--> 
+            <!--Timer-->
             <div class="col-md-3">
                 <div id="timeTxt">Timer: <span id="time">75</span></div>
             </div>
+
+
         </div>
         <!--Coding Quiz Start-->
         <div id="quizArea">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Quiz here</h1>
-                    <h2 id="quizQuestion"></h2>
-                    <ul id= "answers" class="answers">
-                        <li id="answer1" class="answer"></li>
-                        <li id="answer2" class="answer"></li>
-                        <li id="answer3" class="answer"></li>
-                        <li id="answer4" class="answer"></li>
+                    <div class="start">
+                        <h1>Coding Quiz</h1>
+                        <p>In this quiz you will race the timer to answer all of the questions. Each correct answer will
+                            add
+                            time to the timer, while incorrect answers will deduct time from the timer. Your final score
+                            will be based on the amount of correct answers and how quickly you are able to complete the
+                            quiz.</p>
+                    </div>
+                    <div id="question-container" class="hide">
+                        <h2 id="quizQuestion"></h2>
+                        <ul id="answers" class="answers">
+                            <li id="answer1" class="answer"></li>
+                            <li id="answer2" class="answer"></li>
+                            <li id="answer3" class="answer"></li>
+                            <li id="answer4" class="answer"></li>
+                        </ul>
+                    </div>
 
-                    </ul>
-                    
-                    
-                    
-                    <button class= "start">Start</button>
-                    
-                    
+                    <button class="startUp">Start</button>
+
+
                     <!-- <p id="quizQuestion">Question Here <br> <button class= "start">Start</button><button class= "answers" id="ansBtn1">Answer1</button> <br> <button class= "answers" id="ansBtn2">Answer2</button> <br>
                         <button class= "answers" id="ansBtn3">Answer3</button> <br> <button class= "answers" id="ansBtn4">Answer4</button></p> -->
-                    </div> 
                 </div>
             </div>
         </div>
-        <script src="Assets/javascript.js"></script>
-    </body>
-    
+        <div id="gameOver" class="hide">
+            <h1> Game Over</h1>
+            <p>Your score is <span id="finalScoreEl"></span>.<br>
+                Enter your initials here.</p>
+            <input type="text">
+        </div>
+    </div>
+    <script src="Assets/javascript.js"></script>
+</body>
+
+
 </html>

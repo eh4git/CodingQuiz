@@ -1,0 +1,34 @@
+body {
+    background-color: cadetblue;
+}
+p {
+    font-size: 20px;
+}
+.container {
+    margin: auto;
+    text-align: center;
+    border: solid;
+    border-style: double;
+    border-width: 10px;
+    border-color: darkgoldenrod;
+    color: rgb(168, 67, 236);
+    background-color: burlywood;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+.answer {
+    width: auto;
+    display: inline-block;
+    background-color: darkgreen;
+    color: white;
+    font-size:30px;
+    border-radius: 7px;
+    padding: 20px;
+}
+
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
