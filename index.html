@@ -14,8 +14,8 @@
     <div class="container">
         <div class="row">
             <!--Highscores-->
-            <div class="col-md-3">
-                <p><button id="highScoresBtn"><a href="highscores.html"> Highscores</a></button></p>
+            <div class="col-md-3" id="highScoreDiv">
+                <p><a href="highscores.html"> Highscores</a></p>
             </div>
             <!--Blank Space-->
             <div class="col-md-3">
@@ -57,8 +57,7 @@
                     <button class="startUp">Start</button>
 
 
-                    <!-- <p id="quizQuestion">Question Here <br> <button class= "start">Start</button><button class= "answers" id="ansBtn1">Answer1</button> <br> <button class= "answers" id="ansBtn2">Answer2</button> <br>
-                        <button class= "answers" id="ansBtn3">Answer3</button> <br> <button class= "answers" id="ansBtn4">Answer4</button></p> -->
+                
                 </div>
             </div>
         </div>
@@ -66,7 +65,7 @@
             <h1> Game Over</h1>
             <p>Your score is <span id="finalScoreEl"></span>.<br>
                 Enter your initials here.</p>
-            <input type="text">
+            <input type="text"><input id="initialEnter" type="submit" max="3">
         </div>
     </div>
     <script src="Assets/javascript.js"></script>

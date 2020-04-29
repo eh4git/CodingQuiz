@@ -1,7 +1,14 @@
+//General Variables
 var questIndex = 0;
 var allAnswers = "";
-var timeOnClock = 5;
+var timeOnClock = 75;
 var points = 0;
+var playerInput = document.querySelector("#initialEnter")
+// var userInfo = {
+//     playerName: playerInput.value.trim(),
+//     points: points.value.trim()
+//   };
+var savedScore= [];
 
 var questArray = [
     {
@@ -40,44 +47,51 @@ var questArray = [
         correctAns: "green"
     },
     {
-        question: "Whats everyone's fav color?",
+        question: "This is the last question!",
+        answer: ["green", "blue", "red", "orange"],
+        correctAns: "red"
+    },
+    {
+        question: "This is a dummy question!",
         answer: ["green", "blue", "red", "orange"],
         correctAns: "red"
     },
 ]
 
-var setTime = function(timerStop) {
-    timeOnClock--;
-    var timerEl = document.querySelector("#time");
-    timerEl.textContent = timeOnClock;
-    //console.log(timeOnClock)
-    if (timeOnClock === 0) {
-        clearInterval(timerStop);
-    }
-}
 
 //initiate quiz
 function startQuiz() {
 
     //timer
-    var timerStop = setInterval(setTime, 1000);
+    var timerStop = setInterval(function () {
+        timeOnClock--;
+        var timerEl = document.querySelector("#time");
+        timerEl.textContent = timeOnClock;
+        //console.log(timeOnClock)
+        if (timeOnClock === 0) {
+            console.log(timerStop)
+            console.log("Hello")
+            clearInterval(timerStop);
+        }
+    }, 1000);
     //console.log("Timer: " + timeOnClock, "");
-    setTime(timerStop);
 
     //hide start elements
     var startEl = document.querySelector('.startUp');
     startEl.classList.add('hide');
     var startEl1 = document.querySelector(".start");
     startEl1.classList.add('hide');
+    var startEl2 = document.querySelector("#highScoreDiv");
+    startEl2.classList.add("hide");
 
     //show question elements
     var questionEl = document.querySelector('#question-container');
     questionEl.classList.remove('hide');
     questionEl.classList.add('show');
 
+
     //show first question
     questionSelection();
-
 };
 
 // this function "grabs" #quizQuestion and sets it equal to questEl1
@@ -90,7 +104,7 @@ function questionSelection() {
     //remove correct tag
     var allAnswers = document.querySelectorAll(".answer"); // get array of all choices
     for (i = 0; i < allAnswers.length; i++) { // loop trough choices and check if the choice is right
-        allAnswers[i].classList.remove('correct'); 
+        allAnswers[i].classList.remove('correct');
     }
 
     //populated the html with question data
@@ -115,46 +129,72 @@ function questionSelection() {
     }
 
     questIndex++;
-
-    if (questIndex > 7) {
-        //calc point
+//Game Over
+    if (questIndex === 9) {
+        
+        var endScreen = document.querySelector('#gameOver');
+        endScreen.classList.remove('hide');
+        endScreen.classList.add('show');
+        var endHidden= document.querySelector("#question-container");
+        endHidden.classList.remove('show')
+        endHidden.classList.add('hide');
+        
         points = timeOnClock;
-        //redirect the html to load highscores html
-        window.location.href ="./highscores.html";
+        finalScoreEl.textContent = points;
 
+        
         console.log('******game over');
     }
-
 }
+ var highscoreDirect =function(){
+    event.preventDefault();
+    var playerText = playerInput.value.trim();
+    savedScore.push(playerText)
+    savedScore.push(points)
+    playerInput.value = ""
+    // window.location.href = "/highscores.html";
+    localStorage.setOb("savedScore", JSON.stringify(savedScore))
+    localStorage.setItem("savedScore", JSON.stringify(savedScore))
+    console.log(highscoreDirect)
+     }
 
-var answerClickHandler = function() {
+var answerClickHandler = function () {
     //indicate right answer or wrong answer
     if (event.target.className.indexOf('correct') > -1) {
         //if you get it right then add 5 to time
-        timeOnClock = timeOnClock + 5;
+        timeOnClock = timeOnClock + 10;
+        //add display showing "correct"
     } else {
         //else substract 5 secs
-        timeOnClock = timeOnClock + 5;
+        timeOnClock = timeOnClock - 10;
+        //add display showing "wrong"
+        
     }
-
     //render next quesstion
     questionSelection()
-
+    
 }
+
 
 //add start btn function to initialize quiz
 var startBtn = document.querySelector(".startUp");
 startBtn.addEventListener("click", startQuiz);
 
 //setting up parent delegator   aplies event listener to the answer buttons without
-document.querySelector('#question-container').addEventListener('click',function() {
+document.querySelector('#question-container').addEventListener('click', function () {
     //checking for right className
     if (event.target.className.indexOf('answer') > -1) {
         answerClickHandler(); // do something
     }
-})
+});
 
-//1. html add a score and initial input
+var initalSub = document.querySelector('#initialEnter');
+initalSub.addEventListener("click", highscoreDirect); 
+   
+    
+
+
+//1. html add a score and initial input 
 //2. submit score button => local storage of {} of score and name
 
 //highscores html you will render the local stoarge content.
