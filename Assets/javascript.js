@@ -9,49 +9,50 @@ var savedScore = [];
 
 var questArray = [
     {
-        question: "Whats my fav color?",
-        answer: ["a", "b", "c", "d"],
-        correctAns: "d"
+        question: "What is an element?",
+        answer: ["A number", "A type of variable", "A list of variables", "The name for a node in a html document"],
+        correctAns: "The name for a node in a html document"
     },
     {
-        question: "Whats your fav color?",
-        answer: ["green", "blue", "red", "orange"],
-        correctAns: "blue"
+        question: 'What is the "DOM"?',
+        answer: ["A tree like representation of the structre of a html document", "A set of functions", "An array that contains objects", "A place where vilians hide."],
+        correctAns: "A tree like representation of the structre of a html document"
     },
     {
-        question: "Whats his fav color?",
-        answer: ["green", "blue", "red", "orange"],
-        correctAns: "green"
+        question: "What is console.log used for?",
+        answer: ["To check for spelling errors", "To help the developer check values of variables and isolate bugs", "To let your computer know how you really feel", "To apply css to html elements"],
+        correctAns: "To help the developer check values of variables and isolate bugs"
     },
     {
-        question: "Whats her fav color?",
-        answer: ["green", "blue", "red", "orange"],
-        correctAns: "orange"
+        question: "Whats is a boolean?",
+        answer: ["A type of object", "Something to make soup with", "A variable that is true or false", "Gold or silver ingots of a standard weight"],
+        correctAns: "A variable that is true or false"
     },
     {
-        question: "Whats their fav color?",
-        answer: ["green", "blue", "red", "orange"],
-        correctAns: "red"
+        question: "What color do the names of functions have when using Visual Studio Code?",
+        answer: ["Yellow", "Blue", "Green", "Orange"],
+        correctAns: "Yellow"
     },
     {
-        question: "Whats its fav color?",
-        answer: ["green", "blue", "red", "orange"],
-        correctAns: "blue"
+        question: "Whats is JQuery?",
+        answer: ["The name of a programming language", "A type of loop", "A type of bird", "A JavaScript Library"],
+        correctAns: "A JavaScript Library"
     },
     {
-        question: "Whats our fav color?",
-        answer: ["green", "blue", "red", "orange"],
-        correctAns: "green"
+        question: "What does API stand for?",
+        answer: ["All Pizza Ingredients", "Automatic Programming Interface", "Application Programming Interface", "Application Perfered Interface"],
+        correctAns: "Application Programming Interface"
     },
     {
-        question: "This is the last question!",
-        answer: ["green", "blue", "red", "orange"],
-        correctAns: "red"
+        question: "What can be used to comment out text in CSS",
+        answer: ["/*Text Here*/", "*Text Here*", "<!--Text Here-->", "!!!---Text Here---!!!"],
+        correctAns: "/*Text Here*/"
     },
+    //this is a dummy question to fix logic
     {
-        question: "This is a dummy question!",
-        answer: ["green", "blue", "red", "orange"],
-        correctAns: "red"
+        question: "",
+        answer: ["", "", "", ""],
+        correctAns: "NONE"
     },
 ]
 
@@ -67,12 +68,16 @@ function startQuiz() {
         var timerEl = document.querySelector("#time");
         timerEl.textContent = timeOnClock;
         //console.log(timeOnClock)
-        if (timeOnClock === 0) {
-            console.log(timerStop)
-            console.log("Hello")
+        if (timeOnClock <= 0) {
             clearInterval(timerStop);
             document.querySelector('.right-wrong').classList.add('hide');
             document.querySelector('.right-wrong').classList.remove('show');
+            var endScreen = document.querySelector('#gameOver');
+            endScreen.classList.remove('hide');
+            endScreen.classList.add('show');
+            var endHidden = document.querySelector("#question-container");
+            endHidden.classList.remove('show')
+            endHidden.classList.add('hide');
         }
         if (questIndex === 9) {
             clearInterval(timerStop);
@@ -146,21 +151,7 @@ function questionSelection() {
     }
 
     questIndex++;
-    //Game Over
-    //if (questIndex === 9) {
 
-    // var endScreen = document.querySelector('#gameOver');
-    // endScreen.classList.remove('hide');
-    // endScreen.classList.add('show');
-    // var endHidden = document.querySelector("#question-container");
-    // endHidden.classList.remove('show')
-    // endHidden.classList.add('hide');
-
-    // points = timeOnClock;
-    // finalScoreEl.textContent = points;
-
-    // console.log('******game over');
-    //}
 }
 var highscoreDirect = function (event) {
     event.preventDefault();

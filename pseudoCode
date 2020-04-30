@@ -10,7 +10,7 @@ If the user has time left on the quiz will continue untill all of the questions 
 If the quiz ends the timer stops and the users final score will be displayed. The final score will be equal to the time left on the timer.
 There will be a form underneath the final score that says "enter initials". When the user presses enter they will be directed to the high scores page. 
 
-When the user reaches the highscore page they will see a list of high scores in order based on score. There will be two buttons underneath the scores, one 
+When the user reaches the highscore page they will see a list of high scores. There will be two buttons underneath the scores, one 
 will say "back" and will redirect the user to the display that explains the quiz and has the button to start the quiz. The other button will give the user
 the option to clear the highscore list.
 

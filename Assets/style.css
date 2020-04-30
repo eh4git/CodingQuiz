@@ -1,11 +1,18 @@
 body {
-    background-color: rgb(186, 210, 248);
+    background-color: rgb(168, 168, 168);
+    margin: auto;
 }
 p {
     font-size: 20px;
 }
 li {
     border-style: outset;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    width: 50px;
+    list-style: none;
     
 }
 .container {
@@ -14,20 +21,21 @@ li {
     border: solid;
     border-style: double;
     border-width: 10px;
-    border-color: darkgoldenrod;
+    border-color: rgb(195, 184, 154);
     color: rgb(0, 0, 0);
-    background-color: burlywood;
+    background-color: rgb(255, 253, 250);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     
 }
 .answer {
-    width: auto;
+    width: 100%;
     display: inline-block;
-    background-color: darkgreen;
+    background-color: rgb(0, 0, 0);
     color: white;
     font-size:30px;
     border-radius: 7px;
     padding: 20px;
+    margin: auto;
 }
 
 .hide {

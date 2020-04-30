@@ -21,3 +21,7 @@ for (var i = 0; i < getLocalData.length; i++) {
     //apprend the created list item
     document.querySelector('#highscores').append(listItem);
 }
+document.querySelector('#clear').addEventListener('click', function(event){
+    localStorage. clear(event);
+})
+
