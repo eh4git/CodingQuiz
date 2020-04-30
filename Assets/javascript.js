@@ -4,11 +4,8 @@ var allAnswers = "";
 var timeOnClock = 75;
 var points = 0;
 var playerInput = document.querySelector("#initialEnter")
-// var userInfo = {
-//     playerName: playerInput.value.trim(),
-//     points: points.value.trim()
-//   };
-var savedScore= [];
+
+var savedScore = [];
 
 var questArray = [
     {
@@ -61,7 +58,9 @@ var questArray = [
 
 //initiate quiz
 function startQuiz() {
-
+    if (localStorage.getItem("savedScore")) {
+        savedScore = JSON.parse(localStorage.getItem("savedScore"))
+    }
     //timer
     var timerStop = setInterval(function () {
         timeOnClock--;
@@ -72,6 +71,24 @@ function startQuiz() {
             console.log(timerStop)
             console.log("Hello")
             clearInterval(timerStop);
+            document.querySelector('.right-wrong').classList.add('hide');
+            document.querySelector('.right-wrong').classList.remove('show');
+        }
+        if (questIndex === 9) {
+            clearInterval(timerStop);
+            document.querySelector('.right-wrong').classList.add('hide');
+            document.querySelector('.right-wrong').classList.remove('show');
+            var endScreen = document.querySelector('#gameOver');
+            endScreen.classList.remove('hide');
+            endScreen.classList.add('show');
+            var endHidden = document.querySelector("#question-container");
+            endHidden.classList.remove('show')
+            endHidden.classList.add('hide');
+
+            points = timeOnClock;
+            finalScoreEl.textContent = points;
+
+            console.log('******game over');
         }
     }, 1000);
     //console.log("Timer: " + timeOnClock, "");
@@ -129,34 +146,37 @@ function questionSelection() {
     }
 
     questIndex++;
-//Game Over
-    if (questIndex === 9) {
-        
-        var endScreen = document.querySelector('#gameOver');
-        endScreen.classList.remove('hide');
-        endScreen.classList.add('show');
-        var endHidden= document.querySelector("#question-container");
-        endHidden.classList.remove('show')
-        endHidden.classList.add('hide');
-        
-        points = timeOnClock;
-        finalScoreEl.textContent = points;
+    //Game Over
+    //if (questIndex === 9) {
 
-        
-        console.log('******game over');
-    }
+    // var endScreen = document.querySelector('#gameOver');
+    // endScreen.classList.remove('hide');
+    // endScreen.classList.add('show');
+    // var endHidden = document.querySelector("#question-container");
+    // endHidden.classList.remove('show')
+    // endHidden.classList.add('hide');
+
+    // points = timeOnClock;
+    // finalScoreEl.textContent = points;
+
+    // console.log('******game over');
+    //}
 }
- var highscoreDirect =function(){
+var highscoreDirect = function (event) {
     event.preventDefault();
-    var playerText = playerInput.value.trim();
-    savedScore.push(playerText)
-    savedScore.push(points)
-    playerInput.value = ""
-    // window.location.href = "/highscores.html";
-    localStorage.setOb("savedScore", JSON.stringify(savedScore))
+    var playerText = playerInput.value;
+    console.log(playerText);
+    console.log(playerInput)
+    var playerObject = {
+        playerInitials: playerText,
+        points: points
+    }
+    console.log(playerObject);
+    savedScore.push(playerObject);
+    window.location.href = "./highscores.html";
     localStorage.setItem("savedScore", JSON.stringify(savedScore))
     console.log(highscoreDirect)
-     }
+}
 
 var answerClickHandler = function () {
     //indicate right answer or wrong answer
@@ -164,15 +184,20 @@ var answerClickHandler = function () {
         //if you get it right then add 5 to time
         timeOnClock = timeOnClock + 10;
         //add display showing "correct"
+        document.querySelector('.right-wrong').classList.remove('hide');
+        document.querySelector('.right-wrong').classList.add('show');
+        document.querySelector('.right-wrong').textContent = "correct!";
     } else {
         //else substract 5 secs
         timeOnClock = timeOnClock - 10;
         //add display showing "wrong"
-        
+        document.querySelector('.right-wrong').classList.remove('hide');
+        document.querySelector('.right-wrong').classList.add('show');
+        document.querySelector('.right-wrong').textContent = "wrong!";
     }
     //render next quesstion
     questionSelection()
-    
+
 }
 
 
@@ -188,10 +213,10 @@ document.querySelector('#question-container').addEventListener('click', function
     }
 });
 
-var initalSub = document.querySelector('#initialEnter');
-initalSub.addEventListener("click", highscoreDirect); 
-   
-    
+var initalSub = document.querySelector('#subBtn');
+initalSub.addEventListener("click", highscoreDirect);
+
+
 
 
 //1. html add a score and initial input 
